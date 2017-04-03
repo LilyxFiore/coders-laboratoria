@@ -2,22 +2,33 @@ var chile4 = ["anais-araya.jpg","andrea-miranda.jpg","berenisse-ríos.jpg","cate
 var lima5 = ["andrea-cabrera.jpg","ariadna-izaguirre.jpg","carito-juarez.jpg","cristy-castro.jpg","karol-orrillo.jpg","paola-ortiz.jpg","teresa-lara.jpg"];
 var lima6 = ["arantza-burga.jpg","daguiana-revoredo.jpg","elizabeth-condori.jpg","grecia-rayme.jpg","janine-vega.jpg","michelle-more.jpg","mishel-velasquez.jpg","rosario-felix.jpg"];
 
-var divGalery = document.getElementById("galery");
 var divChile4 = document.getElementById("chile4");
 var divLima5 = document.getElementById("lima5");
 var divLima6 = document.getElementById("lima6");
+
+var divAllImage = document.getElementById("allImg");
 
 function addImage(carpeta,array,divImage){
   for(var i = 0; i < array.length; i++){
       var imgNew = document.createElement("img");
       imgNew.setAttribute("src","assets/img/"+carpeta+"/"+array[i]);
       divImage.appendChild(imgNew);
+      divAllImage.appendChild(divImage);
       }
 }
 
-addImage("chile4",chile4,divChile4); 
+addImage("chile4",chile4,divChile4);
 addImage("lima5",lima5,divLima5);
 addImage("lima6",lima6,divLima6);
+
+function show(element) {
+  element.style.display="block";
+}
+
+function hidden(element1,element2){
+  element1.style.display = "none";
+  element2.style.display = "none";
+}
 
 var select = document.getElementById("select");
 select.onchange = function(){
@@ -26,17 +37,11 @@ select.onchange = function(){
 
 function filter(value){
   switch (value){
-    case "chile4":  divChile4.style.display = "block";
-                    divLima5.style.display = "none";
-                    divLima6.style.display = "none";
+    case "chile4":  show(divChile4); hidden(divLima5, divLima6);
                     break;
-    case "lima5":   divChile4.style.display = "none";
-                    divLima5.style.display = "block";
-                    divLima6.style.display = "none";
+    case "lima5":   show(divLima5); hidden(divChile4, divLima6);
                     break;
-    case "lima6":   divChile4.style.display = "none";
-                    divLima5.style.display = "none";
-                    divLima6.style.display = "block";
+    case "lima6":   show(divLima6); hidden(divChile4, divLima5);
                     break;
   }
 }
