@@ -15,7 +15,7 @@ function addImage(carpeta,array,divImage){
       }
 }
 
-addImage("chile4",chile4,divChile4);
+addImage("chile4",chile4,divChile4); 
 addImage("lima5",lima5,divLima5);
 addImage("lima6",lima6,divLima6);
 
